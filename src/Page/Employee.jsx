@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Box, Typography, Grid, Button, TextField, MenuItem } from '@mui/material';
 import TableComponent from '../Component/Table';
+import { useNavigate } from 'react-router-dom';
 
 const initialData = [
   { id: 1, name: 'John Doe', position: 'Developer' },
@@ -11,10 +12,12 @@ const initialData = [
 
 const headers = ["ID", "Name", "Position", "Action"];
 
+
 const Employee = () => {
   const [searchName, setSearchName] = useState("");
   const [searchId, setSearchId] = useState("");
   const [tableData, setTableData] = useState(initialData);
+  const navigate=useNavigate();
 
   const handleSearch = () => {
     const filteredData = initialData.filter(item =>
@@ -30,7 +33,8 @@ const Employee = () => {
         <Grid item xs={12}>
           <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <Typography variant="h5">ALL EMPLOYEE</Typography>
-            <Button variant="contained">Add Employee</Button>
+            <Button variant="contained" onClick={()=>{navigate("/addemployee")}}>Add Employee</Button>
+
           </Box>
         </Grid>
         <Grid item xs={12}>

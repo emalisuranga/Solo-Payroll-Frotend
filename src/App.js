@@ -4,6 +4,7 @@ import Dashboard from "./Page/Dashboard";
 import Employee from "./Page/Employee";
 import AddProduct from "./Page/AddProduct";
 import Settings from "./Page/Settings";
+import AddEmployee from "./Page/Employee/AddEmployee";
 import SideBar from "./Component/SideBar";
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -21,6 +22,7 @@ export default function App() {
               <Route path="/employee" element={<Employee />} />
               <Route path="/addproduct" element={<AddProduct />} />
               <Route path="/settings" element={<Settings />} />
+              <Route path="/addemployee" element={<AddEmployee />} />
             </Routes>
           </Box>
         </Box>
