@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import InputField from "../../Component/Textfield";
 import SubmitButton from "../../Component/Button";
 import { Stack } from "@mui/material";
+import { Typography } from "@mui/material";
+import BackButton from "../../Component/BackButton";
 
 const RegisterForm = () => {
   const [firstName, setFirstName] = useState("");
@@ -10,6 +12,7 @@ const RegisterForm = () => {
   const [email, setEmail] = useState("");
   const [dateOfBirth, setDateOfBirth] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -18,7 +21,15 @@ const RegisterForm = () => {
 
   return (
     <React.Fragment>
-      <h2>Register Form</h2>
+      <Stack
+        direction="row"
+        alignItems="center"
+        spacing={2}
+        sx={{ mb: 4, mt: 2 }}
+      >
+        <BackButton />
+        <Typography variant="h4">Register Form</Typography>
+      </Stack>
       <form onSubmit={handleSubmit}>
         <Stack spacing={2} direction="row">
           <InputField
