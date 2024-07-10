@@ -21,8 +21,8 @@ const Employee = () => {
 
   const handleSearch = () => {
     const filteredData = initialData.filter(item =>
-      (searchName === "" || item.name.toLowerCase().includes(searchName.toLowerCase())) ||
-      (searchId === "" || item.id.toString() === searchId)
+      (searchName === "" || item.name.toLowerCase().includes(searchName.toLowerCase())) &&
+      (searchId === "" || item.id.toString() === searchId.toString())
     );
     setTableData(filteredData);
   };
