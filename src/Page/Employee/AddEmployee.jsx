@@ -1,23 +1,31 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import InputField from "../../Component/Textfield";
-import SubmitButton from "../../Component/Button";
 import { Stack } from "@mui/material";
 import { Typography } from "@mui/material";
 import BackButton from "../../Component/BackButton";
+import CustomTabs from '../../Component/Tabs';
+import RegisterForm from '../../Component/RegisterForm';
 
-const RegisterForm = () => {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [dateOfBirth, setDateOfBirth] = useState("");
-  const [password, setPassword] = useState("");
-  const navigate = useNavigate();
 
-  function handleSubmit(event) {
-    event.preventDefault();
-    console.log(firstName, lastName, email, dateOfBirth, password);
-  }
+const AddEmployee = () => {
+
+  const handleSubmit = (formData) => {
+    console.log(formData);
+  };
+
+  const tabs = [
+    {
+      label: "Personal Info",
+      content: <RegisterForm onSubmit={handleSubmit} />
+    },
+    {
+      label: "Account Details",
+      content: <RegisterForm onSubmit={handleSubmit} />
+    },
+    {
+      label: "Other Info",
+      content: <RegisterForm onSubmit={handleSubmit} />
+    }
+  ];
 
   return (
     <React.Fragment>
@@ -30,7 +38,7 @@ const RegisterForm = () => {
         <BackButton />
         <Typography variant="h4">Register Form</Typography>
       </Stack>
-      <form onSubmit={handleSubmit}>
+      {/* <form onSubmit={handleSubmit}>
         <Stack spacing={2} direction="row">
           <InputField
             type="text"
@@ -81,12 +89,11 @@ const RegisterForm = () => {
         <SubmitButton variant="outlined" color="secondary" type="submit">
           Register
         </SubmitButton>
-      </form>
-      <small>
-        Already have an account? <Link to="/login">Login Here</Link>
-      </small>
+      </form> */}
+      <CustomTabs tabs={tabs} />
     </React.Fragment>
+    
   );
 };
 
-export default RegisterForm;
+export default AddEmployee;
