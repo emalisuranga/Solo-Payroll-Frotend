@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { Stack } from "@mui/material";
 import { Typography } from "@mui/material";
 import BackButton from "../../Component/BackButton";
 import CustomTabs from "../../Component/CustomTabs";
-import RegisterForm from "../../Component/RegisterForm";
 
 const AddEmployee = () => {
   const handleSubmit = (formData) => {
@@ -126,10 +125,10 @@ const AddEmployee = () => {
         direction="row"
         alignItems="center"
         spacing={2}
-        sx={{ mb: 4, mt: 2 }}
+        sx={{ mb: 2, mt: 2 }}
       >
         <BackButton />
-        <Typography variant="h4">Register Form</Typography>
+        <Typography variant="h5">Register Form</Typography>
       </Stack>
       <CustomTabs sections={sections} onSubmit={handleSubmit} />
     </React.Fragment>

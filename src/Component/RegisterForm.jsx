@@ -3,16 +3,10 @@ import Stack from '@mui/material/Stack';
 import InputField from './InputField';
 import Grid from "@mui/material/Grid";
 
-const RegisterForm = ({ fields, onChange }) => {
-  const [formData, setFormData] = useState({});
-
-  const handleChange = (name, value) => {
-    const newFormData = {
-      ...formData,
-      [name]: value,
-    };
-    setFormData(newFormData);
-    onChange(newFormData);
+const RegisterForm = ({ fields, formData, onChange }) => {
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    onChange({ [name]: value });
   };
 
   return (

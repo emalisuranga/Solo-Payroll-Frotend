@@ -11,7 +11,14 @@ import Button from "./Button";
 
 function CustomTabs({ sections, onSubmit }) {
   const [value, setValue] = useState(0);
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState(
+    sections.reduce((acc, section) => {
+      section.fields.forEach(field => {
+        acc[field.name] = '';
+      });
+      return acc;
+    }, {})
+  );
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -24,14 +31,24 @@ function CustomTabs({ sections, onSubmit }) {
     }));
   };
 
-  const handleSubmit = () => {
-    onSubmit(formData);
-    // Optionally, reset form state after submission
-    setFormData({});
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log('Form submitted:', formData);
+  };
+
+  const handleClear = () => {
+    setFormData(
+      sections.reduce((acc, section) => {
+        section.fields.forEach(field => {
+          acc[field.name] = '';
+        });
+        return acc;
+      }, {})
+    );
   };
 
   return (
-    <Box sx={{ width: '100%' }}>
+    <Box onSubmit={handleSubmit} sx={{ width: '100%' }}>
       <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
         {sections.map((section, index) => (
           <Tab key={index} label={section.label} {...a11yProps(index)} />
@@ -39,18 +56,19 @@ function CustomTabs({ sections, onSubmit }) {
       </Tabs>
       {sections.map((section, index) => (
         <CustomTabPanel key={index} value={value} index={index}>
-          <RegisterForm fields={section.fields} onChange={handleFormChange} />
+          <RegisterForm fields={section.fields} formData={formData} onChange={handleFormChange} />
         </CustomTabPanel>
       ))}
-     <Stack direction="row" spacing={2} sx={{ marginTop: 2 }}>
+     <Stack direction="row" spacing={2} sx={{ marginTop: 2,justifyContent: 'flex-end'  }}>
         <SubmitButton variant="contained" color="primary" type="submit">
           Submit
         </SubmitButton>
-        <Button variant="contained" color="secondary" >
+        <Button variant="contained" color="secondary" onClick={handleClear}>
          Clear
         </Button>
       </Stack>
     </Box>
+    
   );
 }
 

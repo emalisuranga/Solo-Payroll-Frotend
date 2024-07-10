@@ -32,8 +32,8 @@ const Employee = () => {
       <Grid container spacing={2}>
         <Grid item xs={12}>
           <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <Typography variant="h5">ALL EMPLOYEE</Typography>
-            <Button variant="contained" onClick={()=>{navigate("/addemployee")}}>Add Employee</Button>
+            <Typography variant="h5">全従業員</Typography>
+            <Button variant="contained" onClick={()=>{navigate("/addemployee")}}>従業員の追加</Button>
 
           </Box>
         </Grid>
