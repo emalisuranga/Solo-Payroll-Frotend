@@ -18,7 +18,6 @@ import ListItemText from '@mui/material/ListItemText';
 
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import CurrencyYenIcon from '@mui/icons-material/CurrencyYen';
-import AddCircleIcon from '@mui/icons-material/AddCircle';
 import SettingsIcon from '@mui/icons-material/Settings';
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 
@@ -176,7 +175,7 @@ export default function SideBar() {
                 <ListItemText primary="従業員" sx={{ opacity: open ? 1 : 0 }} />
               </ListItemButton>
             </ListItem>
-            <ListItem  disablePadding sx={{ display: 'block' }} onClick={()=>{navigate("/addproduct")}}>
+            <ListItem  disablePadding sx={{ display: 'block' }} onClick={()=>{navigate("/payroll")}}>
               <ListItemButton
                 sx={{
                   minHeight: 48,

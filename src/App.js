@@ -2,9 +2,10 @@ import React from "react";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Dashboard from "./Page/Dashboard";
 import Employee from "./Page/Employee";
-import AddProduct from "./Page/AddProduct";
+import Payroll from "./Page/Payroll";
 import Settings from "./Page/Settings";
 import AddEmployee from "./Page/Employee/AddEmployee";
+import AddSalaryDetails from "./Page/Payroll/AddSalaryDetails";
 import SideBar from "./Component/SideBar";
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -20,9 +21,10 @@ export default function App() {
             <Routes>
               <Route path="/" element={<Dashboard />} />
               <Route path="/employee" element={<Employee />} />
-              <Route path="/addproduct" element={<AddProduct />} />
+              <Route path="/payroll" element={<Payroll />} />
               <Route path="/settings" element={<Settings />} />
               <Route path="/addemployee" element={<AddEmployee />} />
+              <Route path="/add-salary-details" element={<AddSalaryDetails />} />
             </Routes>
           </Box>
         </Box>
