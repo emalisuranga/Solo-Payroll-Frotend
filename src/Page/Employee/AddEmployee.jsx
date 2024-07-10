@@ -2,12 +2,10 @@ import React, { useState } from "react";
 import { Stack } from "@mui/material";
 import { Typography } from "@mui/material";
 import BackButton from "../../Component/BackButton";
-import CustomTabs from '../../Component/Tabs';
-import RegisterForm from '../../Component/RegisterForm';
-
+import CustomTabs from "../../Component/Tabs";
+import RegisterForm from "../../Component/RegisterForm";
 
 const AddEmployee = () => {
-
   const handleSubmit = (formData) => {
     console.log(formData);
   };
@@ -15,16 +13,119 @@ const AddEmployee = () => {
   const tabs = [
     {
       label: "Personal Info",
-      content: <RegisterForm onSubmit={handleSubmit} />
+      content: (
+        <RegisterForm
+          fields={[
+            {
+              name: "firstName",
+              type: "text",
+              label: "First Name",
+              required: true,
+            },
+            {
+              name: "lastName",
+              type: "text",
+              label: "Last Name",
+              required: true,
+            },
+            { name: "phone", type: "text", label: "Phone", required: true },
+            { name: "address", type: "text", label: "Address", required: true },
+            {
+              name: "dateOfBirth",
+              type: "date",
+              label: "Date of Birth",
+              required: true,
+            },
+            {
+              name: "joinDate",
+              type: "date",
+              label: "Join Date",
+              required: true,
+            },
+            {
+              name: "department",
+              type: "text",
+              label: "Department",
+              required: true,
+            },
+          ]}
+          onSubmit={handleSubmit}
+          submitButtonText="Register"
+        />
+      ),
     },
     {
-      label: "Account Details",
-      content: <RegisterForm onSubmit={handleSubmit} />
+      label: "Bank Details",
+      content: (
+        <RegisterForm
+          fields={[
+            {
+              name: "bankAccountNumber",
+              type: "text",
+              label: "Bank Account Number",
+              required: true,
+            },
+            {
+              name: "bankName",
+              type: "text",
+              label: "Bank Name",
+              required: true,
+            },
+            {
+              name: "branchCode",
+              type: "text",
+              label: "Branch Code",
+              required: true,
+            },
+          ]}
+          onSubmit={handleSubmit}
+          submitButtonText="Register"
+        />
+      ),
     },
     {
-      label: "Other Info",
-      content: <RegisterForm onSubmit={handleSubmit} />
-    }
+      label: "Salary Details",
+      content: (
+        <RegisterForm
+          fields={[
+            {
+              name: "basicSalary",
+              type: "text",
+              label: "Basic Salary",
+              required: true,
+            },
+            {
+              name: "overtimePay",
+              type: "text",
+              label: "Overtime Pay",
+              required: true,
+            },
+            { name: "transportationCosts", type: "text", label: "Transportation Costs", required: true },
+            { name: "familyAllowance", type: "text", label: "Family Allowance", required: true },
+            {
+              name: "attendanceAllowance",
+              type: "text",
+              label: "Attendance Allowance",
+              required: true,
+            },
+            {
+              name: "leaveAllowance",
+              type: "text",
+              label: "Leave Allowance",
+              required: true,
+            },
+            {
+              name: "specialAllowance",
+              type: "text",
+              label: "Special Allowance",
+              required: true,
+            },
+          ]}
+          onSubmit={handleSubmit}
+          submitButtonText="Register"
+        />
+      ),
+    },
   ];
 
   return (
@@ -92,7 +193,6 @@ const AddEmployee = () => {
       </form> */}
       <CustomTabs tabs={tabs} />
     </React.Fragment>
-    
   );
 };
 

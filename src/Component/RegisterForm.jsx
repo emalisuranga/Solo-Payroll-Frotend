@@ -1,72 +1,60 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import Grid from "@mui/material/Grid";
 import Stack from '@mui/material/Stack';
-import InputField from './InputField';
-import SubmitButton from './SubmitButton';
+import InputField from "./InputField";
+import SubmitButton from "./SubmitButton";
+import Button from "./Button";
 
-const RegisterForm = ({ onSubmit }) => {
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState('');
-  const [dateOfBirth, setDateOfBirth] = useState('');
-  const [password, setPassword] = useState('');
+const RegisterForm = ({ fields, onSubmit, submitButtonText, clearButtonText }) => {
+  const initialFormState = Object.fromEntries(
+    fields.map((field) => [field.name, ""])
+  );
+
+  const [formData, setFormData] = useState(initialFormState);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    onSubmit({ firstName, lastName, email, dateOfBirth, password });
+    onSubmit(formData);
+  };
+
+  const handleClear = () => {
+    setFormData(initialFormState);
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <Stack spacing={2} direction="row">
-        <InputField
-          type="text"
-          label="First Name"
-          value={firstName}
-          onChange={(e) => setFirstName(e.target.value)}
-          fullWidth
-          required
-          sx={{ marginBottom: 4 }}
-        />
-        <InputField
-          type="text"
-          label="Last Name"
-          value={lastName}
-          onChange={(e) => setLastName(e.target.value)}
-          fullWidth
-          required
-          sx={{ marginBottom: 4 }}
-        />
+      <Grid container spacing={2}>
+        {fields.map((field, index) => (
+          <Grid item xs={6} key={field.name}>
+            <InputField
+              type={field.type}
+              label={field.label}
+              name={field.name}
+              value={formData[field.name]}
+              onChange={handleChange}
+              fullWidth
+              required={field.required}
+              sx={{ marginBottom: 4 }}
+            />
+          </Grid>
+        ))}
+      </Grid>
+      <Stack direction="row" spacing={2} sx={{ marginTop: 2 }}>
+        <SubmitButton variant="contained" color="primary" type="submit">
+          {submitButtonText}
+        </SubmitButton>
+        <Button variant="contained" color="secondary" onClick={handleClear}>
+          {clearButtonText}
+        </Button>
       </Stack>
-      <InputField
-        type="email"
-        label="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        fullWidth
-        required
-        sx={{ marginBottom: 4 }}
-      />
-      <InputField
-        type="password"
-        label="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        fullWidth
-        required
-        sx={{ marginBottom: 4 }}
-      />
-      <InputField
-        type="date"
-        label="Date of Birth"
-        value={dateOfBirth}
-        onChange={(e) => setDateOfBirth(e.target.value)}
-        fullWidth
-        required
-        sx={{ marginBottom: 4 }}
-      />
-      <SubmitButton variant="outlined" color="secondary" type="submit">
-        Register
-      </SubmitButton>
     </form>
   );
 };
