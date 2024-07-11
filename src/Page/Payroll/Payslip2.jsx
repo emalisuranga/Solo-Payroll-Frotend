@@ -7,36 +7,79 @@ import {
   Box,
   Paper,
   Grid,
+  Button,
+  Typography,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import { Typography } from "@mui/material";
+import jsPDF from "jspdf";
+import html2canvas from "html2canvas";
 import InputField from "../../Component/InputField";
 
 const CustomTableCell = styled(TableCell)({
-  border: "2px solid black", // Add outline to each cell
-  width: "150px", // Set the width of each cell
-  padding: "8px", // Adjust padding to fit within 150px
-  boxSizing: "border-box", // Ensure padding and border are included in width
+  border: "2px solid black",
+  width: "150px",
+  padding: "8px",
+  boxSizing: "border-box",
 });
 
 const ThreeRowTable = () => {
+  const exportAsPDF = async () => {
+    const input = document.getElementById("salary-slip");
+
+    // Capture the element as a canvas
+    const canvas = await html2canvas(input, {
+      scale: 2,
+    });
+
+    const imgData = canvas.toDataURL("image/png");
+
+    // A4 size in points (1 point = 1/72 inch)
+    const a4Width = 595.28;
+    const a4Height = 841.89;
+
+    // Get the dimensions of the input element
+    const rect = input.getBoundingClientRect();
+    const elementWidth = rect.width;
+    const elementHeight = rect.height;
+
+    // Calculate scale to fit the element within A4 dimensions
+    const scaleX = a4Width / elementWidth;
+    const scaleY = a4Height / elementHeight;
+    const scale = Math.min(scaleX, scaleY);
+
+    const pdfWidth = elementWidth * scale;
+    const pdfHeight = elementHeight * scale;
+
+    // Create a new PDF document with A4 dimensions
+    const pdf = new jsPDF({
+      orientation: "portrait",
+      unit: "pt",
+      format: [a4Width, a4Height],
+    });
+
+    pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
+    pdf.save("salary-slip.pdf");
+  };
+
   return (
     <Box
       sx={{
         display: "flex",
-        justifyContent: "flex-start",
+        flexDirection: "column",
+        alignItems: "center",
         width: "100%",
         mt: 4,
       }}
     >
       <Paper
+        id="salary-slip"
         sx={{
-          width: "100%", // Ensure Paper takes full width of Box
-          maxWidth: "100%", // Max width if needed
-          p: 2, // Padding
+          width: "100%",
+          maxWidth: "100%",
+          p: 2,
         }}
       >
-        <Table sx={{ width: "450px" }}>
+        <Table sx={{ width: "450px", height: 50 }}>
           <TableBody>
             <TableRow>
               <CustomTableCell>
@@ -169,11 +212,9 @@ const ThreeRowTable = () => {
         </Box>
 
         <Grid container spacing={2} sx={{ mt: 1 }}>
-          {/* First Table */}
           <Grid item xs={8}>
             <Table sx={{ height: 100 }}>
               <TableBody>
-                {/* First Row */}
                 <TableRow>
                   <CustomTableCell rowSpan={4}>
                     <Typography variant="body2" align="center">
@@ -207,7 +248,6 @@ const ThreeRowTable = () => {
                   </CustomTableCell>
                 </TableRow>
 
-                {/* Second Row */}
                 <TableRow>
                   <CustomTableCell>
                     <Typography variant="body2" align="center">
@@ -236,7 +276,6 @@ const ThreeRowTable = () => {
                   </CustomTableCell>
                 </TableRow>
 
-                {/* Third Row */}
                 <TableRow>
                   <CustomTableCell>
                     <Typography variant="body2" align="center">
@@ -264,52 +303,42 @@ const ThreeRowTable = () => {
                     </Typography>
                   </CustomTableCell>
                 </TableRow>
-                <TableRow>
-                  <CustomTableCell>
-                    <Typography variant="body2" align="center">
-                      Row 2, Col 2
-                    </Typography>
-                  </CustomTableCell>
-                  <CustomTableCell>
-                    <Typography variant="body2" align="center">
-                      Row 2, Col 3
-                    </Typography>
-                  </CustomTableCell>
-                  <CustomTableCell>
-                    <Typography variant="body2" align="center">
-                      Row 2, Col 4
-                    </Typography>
-                  </CustomTableCell>
-                  <CustomTableCell>
-                    <Typography variant="body2" align="center">
-                      Row 2, Col 5
-                    </Typography>
-                  </CustomTableCell>
-                  <CustomTableCell>
-                    <Typography variant="body2" align="center">
-                      Row 2, Col 6
-                    </Typography>
-                  </CustomTableCell>
-                </TableRow>
               </TableBody>
             </Table>
           </Grid>
 
           {/* Second Table */}
           <Grid item xs={4}>
-            <Table sx={{ height: 153, width: "100%" }}>
+            <Table>
               <TableBody>
+                {/* First Row */}
                 <TableRow>
+                  <CustomTableCell rowSpan={3}>
+                    <Typography variant="body2" align="center">
+                      Row 1, Col 1
+                    </Typography>
+                  </CustomTableCell>
                   <CustomTableCell>
                     <Typography variant="body2" align="center">
-                      Row 1
+                      Row 1, Col 2
                     </Typography>
                   </CustomTableCell>
                 </TableRow>
+
+                {/* Second Row */}
                 <TableRow>
                   <CustomTableCell>
                     <Typography variant="body2" align="center">
-                      Row 2
+                      Row 2, Col 2
+                    </Typography>
+                  </CustomTableCell>
+                </TableRow>
+
+                {/* Third Row */}
+                <TableRow>
+                  <CustomTableCell>
+                    <Typography variant="body2" align="center">
+                      Row 3, Col 2
                     </Typography>
                   </CustomTableCell>
                 </TableRow>
@@ -658,6 +687,15 @@ const ThreeRowTable = () => {
           maxRows={15}
         />
       </Paper>
+
+      <Button
+        onClick={exportAsPDF}
+        variant="contained"
+        color="primary"
+        sx={{ mt: 4 }}
+      >
+        Export as PDF
+      </Button>
     </Box>
   );
 };
