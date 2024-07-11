@@ -31,18 +31,18 @@ const Employee = () => {
     <Box sx={{ flexGrow: 1, p: 3 }}>
       <Grid container spacing={2}>
         <Grid item xs={12}>
-          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2  }}>
             <Typography variant="h5">全従業員</Typography>
             <Button variant="contained" onClick={()=>{navigate("/addemployee")}}>従業員の追加</Button>
-
           </Box>
         </Grid>
         <Grid item xs={12}>
-          <Box sx={{ display: 'flex', gap: 2 }}>
+          <Box sx={{ display: 'flex', gap: 2, mb: 2 }}>
             <TextField
               label="Name"
               variant="outlined"
               value={searchName}
+              size="small" 
               onChange={(e) => setSearchName(e.target.value)}
             />
             <TextField
@@ -51,6 +51,7 @@ const Employee = () => {
               value={searchId}
               onChange={(e) => setSearchId(e.target.value)}
               select
+              size="small" 
               sx={{ width: 100 }}  // Adjust the width here
             >
               {initialData.map((item) => (
@@ -59,7 +60,7 @@ const Employee = () => {
                 </MenuItem>
               ))}
             </TextField>
-            <Button variant="contained" onClick={handleSearch}>Search</Button>
+            <Button variant="contained" onClick={handleSearch} sx={{ height: 40 }}>Search</Button>
           </Box>
         </Grid>
         <Grid item xs={12}>

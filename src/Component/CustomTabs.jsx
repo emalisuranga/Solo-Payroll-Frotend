@@ -65,7 +65,7 @@ function CustomTabs({ sections, onSubmit }) {
         <SubmitButton variant="contained" color="primary" type="submit">
           Submit
         </SubmitButton>
-        <Button variant="contained" color="secondary" onClick={handleClear}>
+        <Button variant="outlined" color="primary" onClick={handleClear}>
          Clear
         </Button>
       </Stack>

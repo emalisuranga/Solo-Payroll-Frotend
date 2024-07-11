@@ -1,8 +1,22 @@
-import React from "react";
-import { Stack } from "@mui/material";
-import { Typography } from "@mui/material";
+import React, { useState } from "react";
+import {
+  Stack,
+  TextField,
+  MenuItem,
+  Box,
+  Typography,
+  Grid,
+} from "@mui/material";
 import BackButton from "../../Component/BackButton";
 import CustomTabs from "../../Component/CustomTabs";
+import Button from "../../Component/Button";
+
+const initialData = [
+  { id: 1, name: "John Doe", position: "Developer" },
+  { id: 2, name: "Jane Smith", position: "Designer" },
+  { id: 3, name: "Sam Johnson", position: "Manager" },
+  // Add more data as needed
+];
 
 const AddEmployee = () => {
   const handleSubmit = (formData) => {
@@ -11,7 +25,7 @@ const AddEmployee = () => {
 
   const sections = [
     {
-      label: "Personal Info",
+      label: "Employee Information",
       fields: [
         {
           name: "firstName",
@@ -48,47 +62,59 @@ const AddEmployee = () => {
       ],
     },
     {
-      label: "Bank Details",
+      label: "Attendance and Work Details",
       fields: [
         {
-          name: "bankAccountNumber",
+          name: "scheduledWorkingDays",
           type: "text",
-          label: "Bank Account Number",
+          label: "Scheduled Working days",
           required: true,
         },
         {
-          name: "bankName",
+          name: "numberOfWorkingDays",
           type: "text",
-          label: "Bank Name",
+          label: "Number of working days",
           required: true,
         },
         {
-          name: "branchCode",
+          name: "numberOfPaidHolidays",
           type: "text",
-          label: "Branch Code",
+          label: "Number of paid holidays",
+          required: true,
+        },
+        {
+          name: "remainingPaidVacationDays",
+          type: "text",
+          label: "Remaining Paid vacation days",
+          required: true,
+        },
+        {
+          name: "overtime",
+          type: "text",
+          label: "Overtime",
+          required: true,
+        },
+        {
+          name: "timeLate",
+          type: "text",
+          label: "Time Late",
+          required: true,
+        },
+        {
+          name: "timeLeavingEarly",
+          type: "text",
+          label: "Time Leaving Early",
           required: true,
         },
       ],
     },
     {
-      label: "Salary Details",
+      label: "Earnings",
       fields: [
         {
-          name: "basicSalary",
+          name: "attendanceAllowance",
           type: "text",
-          label: "Basic Salary",
-          required: true,
-        },
-        {
-          name: "overtimePay",
-          type: "text",
-          label: "Overtime Pay",
-          required: true,
-        },
-        {
-          name: "transportationCosts",
-          type: "text",
-          label: "Transportation Costs",
+          label: "Attendance Allowance",
           required: true,
         },
         {
@@ -117,7 +143,80 @@ const AddEmployee = () => {
         },
       ],
     },
+    {
+      label: "Deductions",
+      fields: [
+        {
+          name: "healthInsurance",
+          type: "text",
+          label: "Health insurance",
+          required: true,
+        },
+        {
+          name: "employeePensionInsurance",
+          type: "text",
+          label: "Employee pension insurance",
+          required: true,
+        },
+        {
+          name: "employmentInsurance",
+          type: "text",
+          label: "Employment insurance",
+          required: true,
+        },
+        {
+          name: "longTermCareInsurance",
+          type: "text",
+          label: "Long-term care insurance",
+          required: true,
+        },
+        {
+          name: "socialInsurance",
+          type: "text",
+          label: "Social insurance",
+          required: true,
+        },
+        {
+          name: "incomeTax",
+          type: "text",
+          label: "Income tax",
+          required: true,
+        },
+        {
+          name: "residentTax",
+          type: "text",
+          label: "Resident tax",
+          required: true,
+        },
+        {
+          name: "advancePayment",
+          type: "text",
+          label: "Advance payment",
+          required: true,
+        },
+        {
+          name: "yearEndAdjustment",
+          type: "text",
+          label: "Year-end adjustment",
+          required: true,
+        },
+      ],
+    },
   ];
+
+  const [searchName, setSearchName] = useState("");
+  const [searchId, setSearchId] = useState("");
+  const [tableData, setTableData] = useState(initialData);
+
+  const handleSearch = () => {
+    const filteredData = initialData.filter(
+      (item) =>
+        (searchName === "" ||
+          item.name.toLowerCase().includes(searchName.toLowerCase())) &&
+        (searchId === "" || item.id.toString() === searchId.toString())
+    );
+    setTableData(filteredData);
+  };
 
   return (
     <React.Fragment>
@@ -130,6 +229,35 @@ const AddEmployee = () => {
         <BackButton />
         <Typography variant="h5">給与詳細フォーム</Typography>
       </Stack>
+      <Grid item xs={12}>
+        <Box sx={{ display: "flex", gap: 2, mb: 2,justifyContent: "flex-end" }}>
+          <TextField
+            label="Name"
+            variant="outlined"
+            value={searchName}
+            onChange={(e) => setSearchName(e.target.value)}
+            size="small" 
+          />
+          <TextField
+            label="ID"
+            variant="outlined"
+            value={searchId}
+            onChange={(e) => setSearchId(e.target.value)}
+            select
+            size="small" 
+            sx={{ width: 100 }} // Adjust the width here
+          >
+            {initialData.map((item) => (
+              <MenuItem key={item.id} value={item.id}>
+                {item.id}
+              </MenuItem>
+            ))}
+          </TextField>
+          <Button variant="contained" onClick={handleSearch} sx={{ height: 40 }} >
+            Search
+          </Button>
+        </Box>
+      </Grid>
       <CustomTabs sections={sections} onSubmit={handleSubmit} />
     </React.Fragment>
   );
