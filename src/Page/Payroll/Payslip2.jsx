@@ -167,61 +167,6 @@ const ThreeRowTable = () => {
           </Table>
         </Box>
 
-        {/* <Grid container justifyContent="center" spacing={3} sx={{ mt: 1 }}>
-      <Grid item xs={8}>
-        <Table>
-          <TableBody>
-            <TableRow>
-              <CustomTableCell>
-                <Typography variant="body2" align="center">
-                  部門名
-                </Typography>
-              </CustomTableCell>
-              <CustomTableCell>
-                <Typography variant="body2" align="center"></Typography>
-              </CustomTableCell>
-              <CustomTableCell>
-                <Typography variant="body2" align="center">
-                  部門名
-                </Typography>
-              </CustomTableCell>
-              <CustomTableCell>
-                <Typography variant="body2" align="center"></Typography>
-              </CustomTableCell>
-              <CustomTableCell>
-                <Typography variant="body2" align="center">
-                  部門名
-                </Typography>
-              </CustomTableCell>
-              <CustomTableCell>
-                <Typography variant="body2" align="center"></Typography>
-              </CustomTableCell>
-            </TableRow>
-          </TableBody>
-        </Table>
-      </Grid>
-      <Grid item xs={4}>
-        <Table sx={{ minWidth: 150 }}>
-          <TableBody>
-            <TableRow>
-              <CustomTableCell>
-                <Typography variant="body2" align="center">
-                  差引支給額
-                </Typography>
-              </CustomTableCell>
-            </TableRow>
-            <TableRow>
-              <CustomTableCell>
-                <Typography variant="body2" align="center">
-                  879,160
-                </Typography>
-              </CustomTableCell>
-            </TableRow>
-          </TableBody>
-        </Table>
-      </Grid>
-    </Grid> */}
-
         <Grid container spacing={2} sx={{ mt: 1 }}>
           {/* First Table */}
           <Grid item xs={8}>
@@ -370,6 +315,336 @@ const ThreeRowTable = () => {
               </TableBody>
             </Table>
           </Grid>
+        </Grid>
+
+        <Grid sx={{ mt: 2 }}>
+          <Table sx={{ height: 100 }}>
+            <TableBody>
+              {/* First Row */}
+              <TableRow>
+                <CustomTableCell rowSpan={4}>
+                  <Typography variant="body2" align="center">
+                    Row 1, Col 1
+                  </Typography>
+                </CustomTableCell>
+                <CustomTableCell>
+                  <Typography variant="body2" align="center">
+                    Row 1, Col 2
+                  </Typography>
+                </CustomTableCell>
+                <CustomTableCell>
+                  <Typography variant="body2" align="center">
+                    Row 1, Col 3
+                  </Typography>
+                </CustomTableCell>
+                <CustomTableCell>
+                  <Typography variant="body2" align="center">
+                    Row 1, Col 4
+                  </Typography>
+                </CustomTableCell>
+                <CustomTableCell>
+                  <Typography variant="body2" align="center">
+                    Row 1, Col 5
+                  </Typography>
+                </CustomTableCell>
+                <CustomTableCell>
+                  <Typography variant="body2" align="center">
+                    Row 1, Col 6
+                  </Typography>
+                </CustomTableCell>
+                <CustomTableCell>
+                  <Typography variant="body2" align="center">
+                    Row 1, Col 5
+                  </Typography>
+                </CustomTableCell>
+                <CustomTableCell>
+                  <Typography variant="body2" align="center">
+                    Row 1, Col 6
+                  </Typography>
+                </CustomTableCell>
+              </TableRow>
+
+              {/* Second Row */}
+              <TableRow>
+                <CustomTableCell>
+                  <Typography variant="body2" align="center">
+                    Row 2, Col 2
+                  </Typography>
+                </CustomTableCell>
+                <CustomTableCell>
+                  <Typography variant="body2" align="center">
+                    Row 2, Col 3
+                  </Typography>
+                </CustomTableCell>
+                <CustomTableCell>
+                  <Typography variant="body2" align="center">
+                    Row 2, Col 4
+                  </Typography>
+                </CustomTableCell>
+                <CustomTableCell>
+                  <Typography variant="body2" align="center">
+                    Row 2, Col 5
+                  </Typography>
+                </CustomTableCell>
+                <CustomTableCell>
+                  <Typography variant="body2" align="center">
+                    Row 2, Col 6
+                  </Typography>
+                </CustomTableCell>
+                <CustomTableCell>
+                  <Typography variant="body2" align="center">
+                    Row 1, Col 5
+                  </Typography>
+                </CustomTableCell>
+                <CustomTableCell>
+                  <Typography variant="body2" align="center">
+                    Row 1, Col 6
+                  </Typography>
+                </CustomTableCell>
+              </TableRow>
+
+              {/* Third Row */}
+              <TableRow>
+                <CustomTableCell>
+                  <Typography variant="body2" align="center">
+                    Row 3, Col 2
+                  </Typography>
+                </CustomTableCell>
+                <CustomTableCell>
+                  <Typography variant="body2" align="center">
+                    Row 3, Col 3
+                  </Typography>
+                </CustomTableCell>
+                <CustomTableCell>
+                  <Typography variant="body2" align="center">
+                    Row 3, Col 4
+                  </Typography>
+                </CustomTableCell>
+                <CustomTableCell>
+                  <Typography variant="body2" align="center">
+                    Row 3, Col 5
+                  </Typography>
+                </CustomTableCell>
+                <CustomTableCell>
+                  <Typography variant="body2" align="center">
+                    Row 3, Col 6
+                  </Typography>
+                </CustomTableCell>
+                <CustomTableCell>
+                  <Typography variant="body2" align="center">
+                    Row 1, Col 5
+                  </Typography>
+                </CustomTableCell>
+                <CustomTableCell>
+                  <Typography variant="body2" align="center">
+                    Row 1, Col 6
+                  </Typography>
+                </CustomTableCell>
+              </TableRow>
+              <TableRow>
+                <CustomTableCell>
+                  <Typography variant="body2" align="center">
+                    Row 2, Col 2
+                  </Typography>
+                </CustomTableCell>
+                <CustomTableCell>
+                  <Typography variant="body2" align="center">
+                    Row 2, Col 3
+                  </Typography>
+                </CustomTableCell>
+                <CustomTableCell>
+                  <Typography variant="body2" align="center">
+                    Row 2, Col 4
+                  </Typography>
+                </CustomTableCell>
+                <CustomTableCell>
+                  <Typography variant="body2" align="center">
+                    Row 2, Col 5
+                  </Typography>
+                </CustomTableCell>
+                <CustomTableCell>
+                  <Typography variant="body2" align="center">
+                    Row 2, Col 6
+                  </Typography>
+                </CustomTableCell>
+                <CustomTableCell>
+                  <Typography variant="body2" align="center">
+                    Row 1, Col 5
+                  </Typography>
+                </CustomTableCell>
+                <CustomTableCell>
+                  <Typography variant="body2" align="center">
+                    Row 1, Col 6
+                  </Typography>
+                </CustomTableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </Grid>
+
+        <Grid sx={{ mt: 2 }}>
+          <Table sx={{ height: 100 }}>
+            <TableBody>
+              {/* First Row */}
+              <TableRow>
+                <CustomTableCell rowSpan={4}>
+                  <Typography variant="body2" align="center">
+                    Row 1, Col 1
+                  </Typography>
+                </CustomTableCell>
+                <CustomTableCell>
+                  <Typography variant="body2" align="center">
+                    Row 1, Col 2
+                  </Typography>
+                </CustomTableCell>
+                <CustomTableCell>
+                  <Typography variant="body2" align="center">
+                    Row 1, Col 3
+                  </Typography>
+                </CustomTableCell>
+                <CustomTableCell>
+                  <Typography variant="body2" align="center">
+                    Row 1, Col 4
+                  </Typography>
+                </CustomTableCell>
+                <CustomTableCell>
+                  <Typography variant="body2" align="center">
+                    Row 1, Col 5
+                  </Typography>
+                </CustomTableCell>
+                <CustomTableCell>
+                  <Typography variant="body2" align="center">
+                    Row 1, Col 6
+                  </Typography>
+                </CustomTableCell>
+                <CustomTableCell>
+                  <Typography variant="body2" align="center">
+                    Row 1, Col 5
+                  </Typography>
+                </CustomTableCell>
+                <CustomTableCell>
+                  <Typography variant="body2" align="center">
+                    Row 1, Col 6
+                  </Typography>
+                </CustomTableCell>
+              </TableRow>
+
+              {/* Second Row */}
+              <TableRow>
+                <CustomTableCell>
+                  <Typography variant="body2" align="center">
+                    Row 2, Col 2
+                  </Typography>
+                </CustomTableCell>
+                <CustomTableCell>
+                  <Typography variant="body2" align="center">
+                    Row 2, Col 3
+                  </Typography>
+                </CustomTableCell>
+                <CustomTableCell>
+                  <Typography variant="body2" align="center">
+                    Row 2, Col 4
+                  </Typography>
+                </CustomTableCell>
+                <CustomTableCell>
+                  <Typography variant="body2" align="center">
+                    Row 2, Col 5
+                  </Typography>
+                </CustomTableCell>
+                <CustomTableCell>
+                  <Typography variant="body2" align="center">
+                    Row 2, Col 6
+                  </Typography>
+                </CustomTableCell>
+                <CustomTableCell>
+                  <Typography variant="body2" align="center">
+                    Row 1, Col 5
+                  </Typography>
+                </CustomTableCell>
+                <CustomTableCell>
+                  <Typography variant="body2" align="center">
+                    Row 1, Col 6
+                  </Typography>
+                </CustomTableCell>
+              </TableRow>
+
+              {/* Third Row */}
+              <TableRow>
+                <CustomTableCell>
+                  <Typography variant="body2" align="center">
+                    Row 3, Col 2
+                  </Typography>
+                </CustomTableCell>
+                <CustomTableCell>
+                  <Typography variant="body2" align="center">
+                    Row 3, Col 3
+                  </Typography>
+                </CustomTableCell>
+                <CustomTableCell>
+                  <Typography variant="body2" align="center">
+                    Row 3, Col 4
+                  </Typography>
+                </CustomTableCell>
+                <CustomTableCell>
+                  <Typography variant="body2" align="center">
+                    Row 3, Col 5
+                  </Typography>
+                </CustomTableCell>
+                <CustomTableCell>
+                  <Typography variant="body2" align="center">
+                    Row 3, Col 6
+                  </Typography>
+                </CustomTableCell>
+                <CustomTableCell>
+                  <Typography variant="body2" align="center">
+                    Row 1, Col 5
+                  </Typography>
+                </CustomTableCell>
+                <CustomTableCell>
+                  <Typography variant="body2" align="center">
+                    Row 1, Col 6
+                  </Typography>
+                </CustomTableCell>
+              </TableRow>
+              <TableRow>
+                <CustomTableCell>
+                  <Typography variant="body2" align="center">
+                    Row 2, Col 2
+                  </Typography>
+                </CustomTableCell>
+                <CustomTableCell>
+                  <Typography variant="body2" align="center">
+                    Row 2, Col 3
+                  </Typography>
+                </CustomTableCell>
+                <CustomTableCell>
+                  <Typography variant="body2" align="center">
+                    Row 2, Col 4
+                  </Typography>
+                </CustomTableCell>
+                <CustomTableCell>
+                  <Typography variant="body2" align="center">
+                    Row 2, Col 5
+                  </Typography>
+                </CustomTableCell>
+                <CustomTableCell>
+                  <Typography variant="body2" align="center">
+                    Row 2, Col 6
+                  </Typography>
+                </CustomTableCell>
+                <CustomTableCell>
+                  <Typography variant="body2" align="center">
+                    Row 1, Col 5
+                  </Typography>
+                </CustomTableCell>
+                <CustomTableCell>
+                  <Typography variant="body2" align="center">
+                    Row 1, Col 6
+                  </Typography>
+                </CustomTableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
         </Grid>
       </Paper>
     </Box>
