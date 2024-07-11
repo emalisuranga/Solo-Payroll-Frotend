@@ -28,7 +28,11 @@ const ThreeRowTable = () => {
         mt: 4,
       }}
     >
-      <Paper sx={{ width: 1200 }}>
+      <Paper sx={{
+          width: '100%', // Ensure Paper takes full width of Box
+          maxWidth: '100%', // Max width if needed
+          p: 2, // Padding
+        }}>
         <Table sx={{ width: "450px" }}>
           <TableBody>
             <TableRow>
@@ -216,10 +220,10 @@ const ThreeRowTable = () => {
       </Grid>
     </Grid> */}
 
-        <Grid container justifyContent="center" spacing={2} sx={{ mt: 4 }}>
+        <Grid container spacing={2} sx={{ mt: 1 }}>
           {/* First Table */}
-          <Grid item xs={6}>
-            <Table>
+          <Grid item xs={8}>
+            <Table sx={{ height: 100 }}>
               <TableBody>
                 <TableRow>
                   <CustomTableCell>
@@ -355,7 +359,7 @@ const ThreeRowTable = () => {
 
           {/* Second Table */}
           <Grid item>
-            <Table>
+            <Table sx={{ height: 153 }}>
               <TableBody>
                 <TableRow>
                   <CustomTableCell>
