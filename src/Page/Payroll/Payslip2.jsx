@@ -28,11 +28,13 @@ const ThreeRowTable = () => {
         mt: 4,
       }}
     >
-      <Paper sx={{
-          width: '100%', // Ensure Paper takes full width of Box
-          maxWidth: '100%', // Max width if needed
+      <Paper
+        sx={{
+          width: "100%", // Ensure Paper takes full width of Box
+          maxWidth: "100%", // Max width if needed
           p: 2, // Padding
-        }}>
+        }}
+      >
         <Table sx={{ width: "450px" }}>
           <TableBody>
             <TableRow>
@@ -225,8 +227,9 @@ const ThreeRowTable = () => {
           <Grid item xs={8}>
             <Table sx={{ height: 100 }}>
               <TableBody>
+                {/* First Row */}
                 <TableRow>
-                  <CustomTableCell>
+                  <CustomTableCell rowSpan={4}>
                     <Typography variant="body2" align="center">
                       Row 1, Col 1
                     </Typography>
@@ -257,12 +260,9 @@ const ThreeRowTable = () => {
                     </Typography>
                   </CustomTableCell>
                 </TableRow>
+
+                {/* Second Row */}
                 <TableRow>
-                  <CustomTableCell>
-                    <Typography variant="body2" align="center">
-                      Row 2, Col 1
-                    </Typography>
-                  </CustomTableCell>
                   <CustomTableCell>
                     <Typography variant="body2" align="center">
                       Row 2, Col 2
@@ -289,12 +289,9 @@ const ThreeRowTable = () => {
                     </Typography>
                   </CustomTableCell>
                 </TableRow>
+
+                {/* Third Row */}
                 <TableRow>
-                  <CustomTableCell>
-                    <Typography variant="body2" align="center">
-                      Row 3, Col 1
-                    </Typography>
-                  </CustomTableCell>
                   <CustomTableCell>
                     <Typography variant="body2" align="center">
                       Row 3, Col 2
@@ -324,32 +321,27 @@ const ThreeRowTable = () => {
                 <TableRow>
                   <CustomTableCell>
                     <Typography variant="body2" align="center">
-                      Row 3, Col 1
+                      Row 2, Col 2
                     </Typography>
                   </CustomTableCell>
                   <CustomTableCell>
                     <Typography variant="body2" align="center">
-                      Row 3, Col 2
+                      Row 2, Col 3
                     </Typography>
                   </CustomTableCell>
                   <CustomTableCell>
                     <Typography variant="body2" align="center">
-                      Row 3, Col 3
+                      Row 2, Col 4
                     </Typography>
                   </CustomTableCell>
                   <CustomTableCell>
                     <Typography variant="body2" align="center">
-                      Row 3, Col 4
+                      Row 2, Col 5
                     </Typography>
                   </CustomTableCell>
                   <CustomTableCell>
                     <Typography variant="body2" align="center">
-                      Row 3, Col 5
-                    </Typography>
-                  </CustomTableCell>
-                  <CustomTableCell>
-                    <Typography variant="body2" align="center">
-                      Row 3, Col 6
+                      Row 2, Col 6
                     </Typography>
                   </CustomTableCell>
                 </TableRow>
@@ -358,8 +350,8 @@ const ThreeRowTable = () => {
           </Grid>
 
           {/* Second Table */}
-          <Grid item>
-            <Table sx={{ height: 153 }}>
+          <Grid item xs={4}>
+            <Table sx={{ height: 153, width: "100%" }}>
               <TableBody>
                 <TableRow>
                   <CustomTableCell>
