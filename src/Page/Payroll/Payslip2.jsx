@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { Typography } from "@mui/material";
+import InputField from "../../Component/InputField";
 
 const CustomTableCell = styled(TableCell)({
   border: "2px solid black", // Add outline to each cell
@@ -646,6 +647,16 @@ const ThreeRowTable = () => {
             </TableBody>
           </Table>
         </Grid>
+        <InputField
+          type="text"
+          label="備考"
+          name="remarks"
+          value=""
+          fullWidth
+          sx={{ mt: 4 }}
+          rows={15}
+          maxRows={15}
+        />
       </Paper>
     </Box>
   );
