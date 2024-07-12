@@ -6,10 +6,11 @@ import {
   Box,
   Typography,
   Grid,
+  Button
 } from "@mui/material";
 import BackButton from "../../Component/BackButton";
 import CustomTabs from "../../Component/CustomTabs";
-import Button from "../../Component/Button";
+import { useNavigate } from 'react-router-dom';
 
 const initialData = [
   { id: 1, name: "John Doe", position: "Developer" },
@@ -18,7 +19,7 @@ const initialData = [
   // Add more data as needed
 ];
 
-const AddEmployee = () => {
+const AddSalary = () => {
   const handleSubmit = (formData) => {
     console.log(formData);
   };
@@ -207,8 +208,10 @@ const AddEmployee = () => {
   const [searchName, setSearchName] = useState("");
   const [searchId, setSearchId] = useState("");
   const [tableData, setTableData] = useState(initialData);
+  const navigate=useNavigate();
 
   const handleSearch = () => {
+    console.log("jdjdj")
     const filteredData = initialData.filter(
       (item) =>
         (searchName === "" ||
@@ -217,6 +220,10 @@ const AddEmployee = () => {
     );
     setTableData(filteredData);
   };
+
+  const handleNav = ()  => {
+    console.log("test")
+  }
 
   return (
     <React.Fragment>
@@ -259,8 +266,9 @@ const AddEmployee = () => {
         </Box>
       </Grid>
       <CustomTabs sections={sections} onSubmit={handleSubmit} />
+      <Button variant="contained" onClick={()=>{navigate("/payslip")}}>Payslip1</Button>
     </React.Fragment>
   );
 };
 
-export default AddEmployee;
+export default AddSalary;

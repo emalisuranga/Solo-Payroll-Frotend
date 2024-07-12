@@ -34,7 +34,6 @@ const Employee = () => {
           <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
             <Typography variant="h5">従業員給与詳細</Typography>
             <Button variant="contained" onClick={()=>{navigate("/add-salary-details")}}>給与の発生</Button>
-            <Button variant="contained" onClick={()=>{navigate("/payslip")}}>Payslip</Button>
 
           </Box>
         </Grid>
